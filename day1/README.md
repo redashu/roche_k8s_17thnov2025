@@ -1,26 +1,26 @@
 # roche_k8s_17thnov2025
 
-### hypervisor vs contaienrs 
+## Hypervisor vs Containers
 
-<img src="cont1.png">
+![Containers Comparison](cont1.png)
 
-### CRE install support 
+## CRE Install Support
 
-<img src="cre1.png">
+![CRE Installation](cre1.png)
 
-### checking kernel version 
+## Checking Kernel Version
 
-```
+```bash
 [ec2-user@ip-172-31-35-199 ~]$ uname -r
 6.1.158-178.288.amzn2023.x86_64
-
 ```
-### checking docker version 
 
-```
+## Checking Docker Version
+
+```bash
 [ec2-user@ip-172-31-35-199 ~]$ docker --version 
 Docker version 25.0.13, build 0bab007
-[ec2-user@ip-172-31-35-199 ~]$ 
+
 [ec2-user@ip-172-31-35-199 ~]$ docker version 
 Client:
  Version:           25.0.13
@@ -33,48 +33,49 @@ Client:
 
 Server:
  Engine:
-  Version:          25.0.13
-  API version:      1.44 (minimum version 1.24)
-  Go version:       go1.24.9
-  Git commit:       165516e
-  Built:            Mon Nov  3 00:00:00 2025
-
+    Version:          25.0.13
+    API version:      1.44 (minimum version 1.24)
+    Go version:       go1.24.9
+    Git commit:       165516e
+    Built:            Mon Nov  3 00:00:00 2025
 ```
-### docker architecture 
 
-<img src="d_arch.png">
+## Docker Architecture
 
-### docker image understanding 
+![Docker Architecture](d_arch.png)
 
-<img src="img1.png">
+## Docker Image Understanding
 
-### image building tool by container engines
+![Docker Image Concept](img1.png)
 
-<img src="img2.png">
+## Image Building Tool by Container Engines
 
-### editng vscode config
+![Image Building Tools](img2.png)
 
+## Editing VSCode Config
+
+```bash
+nano ~/.config/code-server/config.yaml
 ```
-nano   ~/.config/code-server/config.yaml  
-```
-### pulling docker images
 
-```
- 3  docker pull alpine 
-    4  docker  images
-    5  docker pull quay.io/enxadahost/java
-    6  docker pull quay.io/redhattraining/hello-world-nginx
-    7  history 
-    8  docker pull mcr.microsoft.com/ad-selection/azure/auction-service
-    9  docker pull mcr.microsoft.com/ad-selection/azure/auction-service:non-prod-4.3.0.0
+## Pulling Docker Images
 
+```bash
+docker pull alpine 
+docker images
+docker pull quay.io/enxadahost/java
+docker pull quay.io/redhattraining/hello-world-nginx
+docker pull mcr.microsoft.com/ad-selection/azure/auction-service
+docker pull mcr.microsoft.com/ad-selection/azure/auction-service:non-prod-4.3.0.0
 ```
-### creating container with view 
 
-```
-docker  run  --name ashuc1  -it -d   alpine  
+## Creating Container with View
+
+```bash
+docker run --name ashuc1 -it -d alpine  
 f92ec95d0d527342d4c4ab2e1652e51c32eba6ab2f109a0fd3dbbb2fa8f7a9ad
-[ec2-user@ip-172-31-35-199 ashutoshh-common-apps]$ docker  ps
+
+[ec2-user@ip-172-31-35-199 ashutoshh-common-apps]$ docker ps
 CONTAINER ID   IMAGE     COMMAND     CREATED              STATUS              PORTS     NAMES
 74f8538ac396   alpine    "/bin/sh"   9 seconds ago        Up 9 seconds                  deb10
 dec88d87c13e   alpine    "/bin/sh"   12 seconds ago       Up 11 seconds                 vinayak-alpine-first-run
@@ -82,15 +83,15 @@ dec88d87c13e   alpine    "/bin/sh"   12 seconds ago       Up 11 seconds         
 374873ddb556   alpine    "/bin/sh"   12 seconds ago       Up 12 seconds                 salilc1
 64cf712ed4f4   alpine    "/bin/sh"   13 seconds ago       Up 12 seconds                 path51
 311a20f32dde   alpine    "/bin/sh"   15 seconds ago       Up 14 seconds                 roshc1
-
 ```
 
-### building docker image 
+## Building Docker Image
 
-```
-ls
+```bash
+[ec2-user@ip-172-31-35-199 ashutoshh-common-apps]$ ls
 java-app  python-app  website-apps
-[ec2-user@ip-172-31-35-199 ashutoshh-common-apps]$ docker build  -t  ashupython:v1  python-app/
+
+[ec2-user@ip-172-31-35-199 ashutoshh-common-apps]$ docker build -t ashupython:v1 python-app/
 [+] Building 11.5s (4/7)                                                                               docker:default
  => [internal] load build definition from Dockerfile                                                             0.0s
  => => transferring dockerfile: 410B                                                                             0.0s
@@ -99,15 +100,14 @@ java-app  python-app  website-apps
  => => transferring context: 2B                                                                                  0.0s
  => [1/3] FROM docker.io/library/python:latest@sha256:e6b1f7011589cc717a5112e6fdb56217e9e734a57e4cb50216e912b06  9.3s
  => => resolve docker.io/library/python:latest@sha256:e6b1f7011
+```
 
- ```
- ### creating containber 
+## Creating Container
 
- ```
- [jivi@ip-172-31-35-199 jivi-common-apps]$ docker run -itd --name ashunc1  ashupython:v1  
+```bash
+[jivi@ip-172-31-35-199 jivi-common-apps]$ docker run -itd --name ashunc1 ashupython:v1  
 4d81edcecd78983bbe7b94b16a06dd15ae0f7259a476050c818019dad0410b2a
-[jivi@ip-172-31-35-199 jivi-common-apps]$ 
-[jivi@ip-172-31-35-199 jivi-common-apps]$ 
+
 [jivi@ip-172-31-35-199 jivi-common-apps]$ docker ps
 CONTAINER ID   IMAGE                   COMMAND                  CREATED          STATUS          PORTS     NAMES
 54eed0bda1e4   anjalipython:v1         "python /anjali-code…"   2 seconds ago    Up 1 second               anjalic2
@@ -116,44 +116,81 @@ CONTAINER ID   IMAGE                   COMMAND                  CREATED         
 b77ad407065b   devpython:v1            "python /dev-code/he…"   31 seconds ago   Up 30 seconds             devc1
 7310839f5768   ashishpython:v1         "python /ashish-code…"   39 seconds ago   Up 38 seconds             ashishnewc1
 06f59f013f1b   sagar_python_image:v1   "python /sagar-code/…"   2 minutes ago    Up 2 minutes              sagar_py_image_container
-
-
 ```
-### some more docker cli options 
 
-```
-15  docker ps  | grep ashu
-   16  docker logs ashunc1
-   17  docker logs ashunc1 
-   18  docker logs -f  ashunc1 
-   19  history 
-[jivi@ip-172-31-35-199 jivi-common-apps]$ 
-[jivi@ip-172-31-35-199 jivi-common-apps]$ 
+## Some More Docker CLI Options
+
+```bash
+docker ps | grep ashu
+docker logs ashunc1
+docker logs -f ashunc1
+
 [jivi@ip-172-31-35-199 jivi-common-apps]$ docker kill ashunc1
 ashunc1
-[jivi@ip-172-31-35-199 jivi-common-apps]$ 
-[jivi@ip-172-31-35-199 jivi-common-apps]$ 
+
 [jivi@ip-172-31-35-199 jivi-common-apps]$ docker start ashunc1
 ashunc1
-[jivi@ip-172-31-35-199 jivi-common-apps]$ docker  ps
+
+[jivi@ip-172-31-35-199 jivi-common-apps]$ docker ps
 CONTAINER ID   IMAGE           COMMAND                  CREATED         STATUS                  PORTS     NAMES
 9e10baf44b10   debpython:v1    "python /deb-code/he…"   4 minutes ago   Up Less than a second             deb10
 4d81edcecd78   ashupython:v1   "python /ashu-code/h…"   5 minutes ago   Up 4 seconds                      ashunc1
-[jivi@ip-172-31-35-199 jivi-common-apps]$ 
-[jivi@ip-172-31-35-199 jivi-common-apps]$ 
+
 [jivi@ip-172-31-35-199 jivi-common-apps]$ docker kill ashunc1
 ashunc1
-[jivi@ip-172-31-35-199 jivi-common-apps]$ 
-[jivi@ip-172-31-35-199 jivi-common-apps]$ 
+
 [jivi@ip-172-31-35-199 jivi-common-apps]$ docker rm ashunc1
 ashunc1
+```
+
+## Pushing Image to Docker Registry
+
+![Docker Push Process](push.png)
+
+## Pushing Again
+
+![Docker Push Success](push1.png)
+
+## Pushing to Docker Hub
+
+```bash
+[ec2-user@ip-172-31-35-199 mypython-apps]$ docker tag ashupython:v1 docker.io/dockerashu/ashupython:v1
+
+[ec2-user@ip-172-31-35-199 mypython-apps]$ docker login 
+Log in with your Docker ID or email address to push and pull images from Docker Hub. If you don't have a Docker ID, head over to https://hub.docker.com/ to create one.
+You can log in with your password or a Personal Access Token (PAT). Using a limited-scope PAT grants better security and is required for organizations using SSO. Learn more at https://docs.docker.com/go/access-tokens/
+
+Username: dockerashu
+Password: 
+WARNING! Your password will be stored unencrypted in /home/ec2-user/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+
+[ec2-user@ip-172-31-35-199 mypython-apps]$ docker push docker.io/dockerashu/ashupython:v1
+The push refers to repository [docker.io/dockerashu/ashupython]
+e944a11d886d: Pushed 
+6553e6a56eac: Pushed 
+619f8a5f145e: Mounted from lilas2505/salilpython 
+826bbffa4e22: Mounted from lilas2505/salilpython 
+a44df98af09b: Mounted from lilas2505/salilpython 
+9e2bd532623d: Mounted from lilas2505/salilpython
+```
+
+## using EKSctl to get k8s control plane access
+
+```
+[ec2-user@ip-172-31-35-199 ~]$  eksctl get clusters
+NAME			REGION		EKSCTL CREATED
+delvex-cluster-roche	ap-south-1	True
+[ec2-user@ip-172-31-35-199 ~]$ kubectl   version 
+Client Version: v1.34.2
+Kustomize Version: v5.7.1
+The connection to the server localhost:8080 was refused - did you specify the right host or port?
+[ec2-user@ip-172-31-35-199 ~]$ eksctl utils write-kubeconfig --cluster=delvex-cluster-roche --kubeconfig=/home/ec2-user/.kube/config 
+2025-11-17 10:13:37 [✔]  saved kubeconfig as "/home/ec2-user/.kube/config"
+[ec2-user@ip-172-31-35-199 ~]$ 
 
 
 ```
-### pushing image to docker registry 
-
-<img src="push.png">
-
-### pushing again 
-
-<img src="push1.png">
