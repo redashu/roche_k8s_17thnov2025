@@ -44,3 +44,19 @@ Server:
 
 <img src="d_arch.png">
 
+### docker image understanding 
+
+<img src="img1.png">
+
+### image building tool by container engines
+
+<img src="img2.png">
+
+### editng vscode config
+
+```
+nano   ~/.config/code-server/config.yaml  
+```
+
+
+http://13.203.167.46:8010
