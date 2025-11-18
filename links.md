@@ -8,3 +8,6 @@
 
 [click](https://kubernetes.io/docs/reference/networking/ports-and-protocols/)
 
+### pv example 
+
+[click](https://kubernetes.io/docs/concepts/storage/volumes/#hostpath)
