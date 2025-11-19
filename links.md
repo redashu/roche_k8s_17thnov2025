@@ -11,3 +11,9 @@
 ### pv example 
 
 [click](https://kubernetes.io/docs/concepts/storage/volumes/#hostpath)
+
+
+### HTML UI sample app url 
+
+[click](https://github.com/schoolofdevops/html-sample-app.git)
+
