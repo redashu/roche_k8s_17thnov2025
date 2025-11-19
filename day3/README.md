@@ -40,3 +40,25 @@ Login Succeeded
 ===>
  docker push  rocheashutoshh.azurecr.io/ashuwebapp:v1
 ```
+
+### creating pod with private docker image 
+
+```
+kubectl  run ashupod1  --image  rocheashutoshh.azurecr.io/ashuwebapp:v1  --port 80 --dry-run=client   -o yaml 
+apiVersion: v1
+kind: Pod
+metadata:
+
+```
+
+## image pull error options 
+
+<img src="err.png">
+
+### creating 
+
+```
+kubectl   create  secret   docker-registry  ashu-acr-creds --docker-username rocheashutoshh --docker-password "2+Aq"  --docker-server rocheashutoshh.azurecr.io  --dry-run=client   -o yaml
+
+```
+
