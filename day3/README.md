@@ -143,3 +143,21 @@ ashu-dep1-5b55c8d45c-5k742   1/1     Running   0          5m18s   192.168.35.28 
 [ec2-user@ip-172-31-35-199 day3-deployments]$ 
 
 ```
+### lable to nodes 
+
+```
+ec2-user@ip-172-31-35-199 ~]$ kubectl  label node ip-192-168-21-7.ap-south-1.compute.internal    roche-env=ashutoshh
+node/ip-192-168-21-7.ap-south-1.compute.internal labeled
+[ec2-user@ip-172-31-35-199 ~]$ 
+[ec2-user@ip-172-31-35-199 ~]$ 
+[ec2-user@ip-172-31-35-199 ~]$ kubectl  get node  ip-192-168-21-7.ap-south-1.compute.internal    -l
+error: flag needs an argument: 'l' in -l
+See 'kubectl get --help' for usage.
+[ec2-user@ip-172-31-35-199 ~]$ kubectl  get node  ip-192-168-21-7.ap-south-1.compute.internal   --show-labels 
+NAME                                          STATUS   ROLES    AGE   VERSION               LABELS
+ip-192-168-21-7.ap-south-1.compute.internal   Ready    <none>   8h    v1.34.1-eks-c39b1d0   alpha.eksctl.io/cluster-name=delvex-cluster-roche,alpha.eksctl.io/nodegroup-name=ec2-nodegroup1,beta.kubernetes.io/arch=amd64,beta.kubernetes.io/instance-type=t2.medium,beta.kubernetes.io/os=linux,dev-roche-env=debadatta,failure-domain.beta.kubernetes.io/region=ap-south-1,failure-domain.beta.kubernetes.io/zone=ap-south-1a,k8s.io/cloud-provider-aws=c75a7b2945c7d6b4168762d62af3197e,kubernetes.io/arch=amd64,kubernetes.io/hostname=ip-192-168-21-7.ap-south-1.compute.internal,kubernetes.io/os=linux,node.kubernetes.io/instance-type=t2.medium,roche-env=ashutoshh,topology.ebs.csi.aws.com/zone=ap-south-1a,topology.k8s.aws/zone-id=aps1-az1,topology.kubernetes.io/region=ap-south-1,topology.kubernetes.io/zone=ap-south-1a
+[ec2-user@ip-172-31-35-199 ~]$ 
+[ec2-user@ip-172-31-35-199 ~]$ kubectl  get node  ip-192-168-21-7.ap-south-1.compute.internal   --show-labels  | grep -i ashu
+ip-192-168-21-7.ap-south-1.compute.internal   Ready    <none>   8h    v1.34.1-eks-c39b1d0   alpha.eksctl.io/cluster-name=delvex-cluster-roche,alpha.eksctl.io/nodegroup-name=ec2-nodegroup1,beta.kubernetes.io/arch=amd64,beta.kubernetes.io/instance-type=t2.medium,beta.kubernetes.io/os=linux,dev-roche-env=debadatta,failure-domain.beta.kubernetes.io/region=ap-south-1,failure-domain.beta.kubernetes.io/zone=ap-south-1a,k8s.io/cloud-provider-aws=c75a7b2945c7d6b4168762d62af3197e,kubernetes.io/arch=amd64,kubernetes.io/hostname=ip-192-168-21-7.ap-south-1.compute.internal,kubernetes.io/os=linux,node.kubernetes.io/instance-type=t2.medium,roche-env=ashutoshh,topology.ebs.csi.aws.com/zone=ap-south-1a,topology.k8s.aws/zone-id=aps1-az1,topology.kubernetes.io/region=ap-south-1,topology.kubernetes.io/zone=ap-south-1a
+
+```
