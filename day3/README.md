@@ -97,4 +97,49 @@ kubectl  create  deployment ashu-dep1  --image rocheashutoshh.azurecr.io/ashuweb
 
 <img src="ingress.png">
 
+### deploy nginx ingress controller 
 
+```
+kubectl  apply -f  https://raw.githubusercontent.com/kubernetes/ingress-nginx/refs/heads/main/deploy/static/provider/aws/deploy.yaml
+namespace/ingress-nginx created
+
+
+```
+
+### lets use ingress controller with app to access
+
+```
+kubectl   apply -f acr-secret.yaml  -f deploy1.yaml 
+secret/ashu-acr-creds unchanged
+deployment.apps/ashu-dep1 unchanged
+[ec2-user@ip-172-31-35-199 day3-deployments]$ 
+[ec2-user@ip-172-31-35-199 day3-deployments]$ kubectl  get deploy,secret
+NAME                        READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/ashu-dep1   0/1     1            0           10s
+
+NAME                    TYPE                             DATA   AGE
+secret/ashu-acr-creds   kubernetes.io/dockerconfigjson   1      3h36m
+[ec2-user@ip-172-31-35-199 day3-deployments]$ kubectl  get  po 
+NAME                         READY   STATUS    RESTARTS   AGE
+ashu-dep1-5b55c8d45c-5k742   1/1     Running   0          37s
+
+```
+### creating svc 
+
+```
+kubectl  apply -f internal-lb.yaml 
+service/ashulb1 created
+[ec2-user@ip-172-31-35-199 day3-deployments]$ 
+[ec2-user@ip-172-31-35-199 day3-deployments]$ kubectl  get  svc
+NAME      TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)   AGE
+ashulb1   ClusterIP   10.100.86.73   <none>        80/TCP    4s
+[ec2-user@ip-172-31-35-199 day3-deployments]$ kubectl  get  ep 
+Warning: v1 Endpoints is deprecated in v1.33+; use discovery.k8s.io/v1 EndpointSlice
+NAME      ENDPOINTS          AGE
+ashulb1   192.168.35.28:80   42s
+[ec2-user@ip-172-31-35-199 day3-deployments]$ kubectl  get po -o wide
+NAME                         READY   STATUS    RESTARTS   AGE     IP              NODE                                            NOMINATED NODE   READINESS GATES
+ashu-dep1-5b55c8d45c-5k742   1/1     Running   0          5m18s   192.168.35.28   ip-192-168-59-205.ap-south-1.compute.internal   <none>           <none>
+[ec2-user@ip-172-31-35-199 day3-deployments]$ 
+
+```
