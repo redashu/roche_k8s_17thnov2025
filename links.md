@@ -17,3 +17,6 @@
 
 [click](https://github.com/schoolofdevops/html-sample-app.git)
 
+### docker build and push action 
+
+[click](https://github.com/marketplace/actions/build-and-push-docker-images)
