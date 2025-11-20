@@ -1,0 +1,35 @@
+name: Docker Image CI
+# name of pipeline 
+# Now this  is github triggers 
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+# what kind of jobs we want to run 
+jobs:
+# name of job -- build is just name to refer we can have any name 
+  build:
+    # this runner provided by github it self we can ask for windows | linux | mac based runners 
+    runs-on: ubuntu-latest 
+
+    steps:
+    - name: default action in github action official which check repo
+    # uses section is desing to consume predefine actions 
+    # to get list of workflow like checkout use this link https://github.com/actions
+      uses: actions/checkout@v3
+    - name: we can run commands depends on runs-on os 
+      run: |
+        date
+        echo $GITHUB_REF
+        echo $TAG
+      # we can search some workflow on google and use it like given below 
+    - uses: mr-smithers-excellent/docker-build-push@v6
+      name: Build & push Docker image
+      with:
+        image: dockerashu/githubactions
+        tags: v1, latest
+        registry: docker.io
+        dockerfile: Dockerfile
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
