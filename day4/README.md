@@ -18,3 +18,8 @@ README.md  k8s-manifests  webapp-code
 [ec2-user@ip-172-31-35-199 roche-ashu-k8s-cicd]$ 
 
 ```
+
+## user and roles 
+
+<img src="role1.png">
+
